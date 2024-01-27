@@ -1,0 +1,71 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<body>
+  <!-- Main Section -->
+  <main class="settingsPage profile my-md">
+    <div class="container">
+      <div class="layout">
+        <div class="column column--1of3">
+          <div class="card text-center">
+            <div class="card__body dev">
+              <img class="avatar avatar--xl dev__avatar" src={% static 'images/sabri.jpg' %} />
+              <h2 class="dev__name">Amir Hossein Sabri</h2>
+              <p class="dev__title">@27752357</p>
+              <p class="dev__title">Frontend & Backend</p>
+              <ul class="dev__social">
+                <li>
+                <a href="https://github.com/0x27752357" class="header__logo">
+                  <img src={% static 'images/github.svg' %} alt="FuckSearchs Logo" />
+                </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="column column--1of3">
+            <div class="card text-center">
+              <div class="card__body dev">
+                <img class="avatar avatar--xl dev__avatar" src={% static 'images/keivanloo.jpg' %} />
+                <h2 class="dev__name">Kimia Keivanloo</h2>
+                <p class="dev__title">@kkeivanloo</p>
+                <p class="dev__title">API & database</p>
+                <ul class="dev__social">
+                  <li>
+                  <a href="https://github.com/kimiakeivan" class="header__logo">
+                    <img src={% static 'images/github.svg' %} alt="FuckSearchs Logo" />
+                  </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="column column--1of3">
+            <div class="card text-center">
+              <div class="card__body dev">
+                <img class="avatar avatar--xl dev__avatar" src={% static 'images/khalili.jpg' %} />
+                <h2 class="dev__name">Sara Khalili</h2>
+                <p class="dev__title">@sarakh9</p>
+                <p class="dev__title">utilities & model stracture</p>
+                <ul class="dev__social">
+                  <li>
+                  <a href="https://github.com/sarakh9" class="header__logo">
+                    <img src={% static 'images/github.svg' %} alt="FuckSearchs Logo" />
+                  </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+
+
+       
+      </div>
+    </div>
+  </main>
+</body>
+{% endblock content %}

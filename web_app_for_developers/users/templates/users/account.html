@@ -1,0 +1,115 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<body>
+  <!-- Main Section -->
+  <main class="settingsPage profile my-md">
+    <div class="container">
+      <div class="layout">
+        <div class="column column--1of3">
+          <div class="card text-center">
+            <div class="card__body dev">
+              <a class="tag tag--pill tag--main settings__btn" href={% url 'edit-account' %}><i class="im im-edit"></i> Edit</a>
+              <img class="avatar avatar--xl dev__avatar" src={{profile.profile_img.url}} />
+              <h2 class="dev__name">{{profile.name}} {{profile.last_name}}</h2>
+              <p class="dev__title">@{{profile.username}}</p>
+              {% if profile.short_intro %}
+              <p class="dev__title">{{profile.short_intro}}</p>
+              {% endif %}
+              {% if profile.location %}
+              <p class="dev__location">Located in {{profile.location}}</p>
+              {% endif %}
+              <p class="dev__location">Joined in {{profile.create_date}}</p>
+              <ul class="dev__social">
+                {% if profile.social_github %}
+                <li>
+                <a href="https://{{profile.social_github}}" class="header__logo">
+                  <img src={% static 'images/github.svg' %} alt="FuckSearchs Logo" />
+                </a>
+                </li>
+                {% endif %}
+                {% if profile.social_twitter %}
+                <li>
+                  <a href= "https://{{profile.social_twitter}}" class="header__logo">
+                    <img src={% static 'images/twitter.svg' %} alt="FuckSearchs Logo" />
+                  </a>
+                </li>
+                {% endif %}
+                {% if profile.social_linkedin %}
+                <li>
+                  <a href= "https://{{profile.social_linkedin}}" class="header__logo">
+                    <img src={% static 'images/linkedin.svg' %} alt="FuckSearchs Logo" />
+                  </a>                
+                </li>
+                {% endif %}
+                {% if profile.social_youtube %}
+                <li>
+                  <a href= "https://{{profile.social_youtube}}" class="header__logo">
+                  <img src={% static 'images/youtube.svg' %} alt="FuckSearchs Logo" />
+                </a>        
+                </li>
+                {% endif %}
+              </ul>
+
+            </div>
+          </div>
+        </div>
+        <div class="column column--2of3">
+          <div class="devInfo">
+            <h3 class="devInfo__title">About Me</h3>
+            <p class="devInfo__about">{{profile.bio}}</p>
+          </div>
+          <div class="settings">
+            <h3 class="settings__title">Skills</h3>
+            <a class="tag tag--pill tag--sub settings__btn tag--lg" href={% url 'create-skill' %}><i class="im im-plus"></i> Add Skill</a>
+          </div>
+
+          <table class="settings__table">
+            {% for skill in skills  %}
+            <tr>
+              <td class="settings__tableInfo">
+                <h4>{{skill.name}}</h4>
+                <p>
+                  {{skill.description}}
+                </p>
+              </td>
+              <td class="settings__tableActions">
+                <a class="tag tag--pill tag--main settings__btn" href={% url 'edit-skill' skill.id %}><i class="im im-edit"></i> Edit</a>
+                <a class="tag tag--pill tag--main settings__btn" href={% url 'delete-skill' skill.id %}><i class="im im-x-mark-circle-o"></i>
+                  Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
+
+          <div class="settings">
+            <h3 class="settings__title">Projects</h3>
+            <a class="tag tag--pill tag--sub settings__btn tag--lg" href={% url 'create-project' %}><i class="im im-plus"></i> Add Project</a>
+          </div>
+
+          <table class="settings__table">
+            {% for project in profile.project_set.all  %}
+            <tr>
+              <td class="settings__thumbnail">
+                <a href={% url 'projectPK' project.id %}><img src={{project.fearured_img.url}} alt="Project Thumbnail" /></a>
+              </td>
+              <td class="settings__tableInfo">
+                <a  href={% url 'projectPK' project.id %}>{{project.title}}</a>
+                <p>
+                  {{project.description}}
+                </p>
+              </td>
+              <td class="settings__tableActions">
+                <a class="tag tag--pill tag--main settings__btn" href={% url 'update-project' project.id %}><i class="im im-edit"></i> Edit</a>
+                <a class="tag tag--pill tag--main settings__btn" href={% url 'delete-project' project.id %}><i class="im im-x-mark-circle-o"></i>
+                  Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+{% endblock content %}
